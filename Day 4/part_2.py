@@ -17,11 +17,7 @@ for r in range(1, R - 1):
                 if array[nr][nc] == "M":
                     # Check for corresponding 'S'
                     opposite_r, opposite_c = r - dr, c - dc
-                    if (
-                        0 <= opposite_r < R
-                        and 0 <= opposite_c < C
-                        and array[opposite_r][opposite_c] == "S"
-                    ):
+                    if array[opposite_r][opposite_c] == "S":
                         ms_count += 1
             # A valid X-MAS has exactly two valid pairs
             if ms_count == 2:
