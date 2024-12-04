@@ -1,7 +1,5 @@
-import numpy as np
-
 with open("input.txt", "r") as file:
-    array = np.array(file.read().splitlines())
+    array = file.read().splitlines()
 
 R, C = len(array), len(array[0])
 ans = 0
@@ -13,13 +11,8 @@ for r in range(1, R - 1):
         if array[r][c] == "A":
             ms_count = 0  # Count valid M and S pairs
             for dr, dc in orientations:
-                nr, nc = r + dr, c + dc  # New row, column
-                if array[nr][nc] == "M":
-                    # Check for corresponding 'S'
-                    opposite_r, opposite_c = r - dr, c - dc
-                    if array[opposite_r][opposite_c] == "S":
-                        ms_count += 1
-            # A valid X-MAS has exactly two valid pairs
+                if array[r + dr][c + dc] == "M" and array[r - dr][c - dc] == "S":
+                    ms_count += 1
             if ms_count == 2:
                 ans += 1
 
