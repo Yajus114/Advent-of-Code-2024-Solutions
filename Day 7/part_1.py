@@ -3,15 +3,10 @@
 
 def check(var: int, target: int, elems: list, ind: int, llm: int) -> bool:
     if ind == llm:
-        return True if var == target else False
+        var == target
 
     elem = elems[ind]
-    return (
-        True
-        if check(var + elem, target, elems, ind + 1, llm)
-        or check(var * elem, target, elems, ind + 1, llm)
-        else False
-    )
+    return check(var + elem, target, elems, ind + 1, llm) or check(var * elem, target, elems, ind + 1, llm)
 
 
 with open("input.txt", "r") as file:
