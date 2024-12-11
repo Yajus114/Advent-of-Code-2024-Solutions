@@ -1,32 +1,24 @@
+from functools import cache
+from math import floor, log10
+
 with open("input.txt", "r") as f:
-    inp = [int(x) for x in f.read().split()]
+    stones = [int(x) for x in f.readline().split()]
 
 
-def even_digits(elem: int) -> bool:
-    temp = str(elem)
-    if len(temp) % 2 == 0:
-        return True
-    return False
+@cache
+def count(stone, steps):
+    if steps == 0:
+        return 1
+    if stone == 0:
+        return count(1, steps - 1)
+
+    half_digits = floor(log10(stone)) + 1
+    if half_digits % 2 == 0:
+        divisor = 10 ** (half_digits // 2)
+        return count(stone // divisor, steps - 1) + count(stone % divisor, steps - 1)
+
+    return count(stone * 2024, steps - 1)
 
 
-def twice(elem: int) -> list:
-    temp = str(elem)
-    l_temp = int(len(temp) / 2)
-    return [int(temp[:l_temp]), int(temp[l_temp:])]
-
-
-for _ in range(25):
-    l = len(inp)
-    i = 0
-    while i < l:
-        test = inp[i]
-        if test == 0:
-            inp[i] = 1
-        elif even_digits(test):
-            inp = inp[:i] + twice(test) + inp[i + 1 :]
-            l = len(inp)
-            i += 1
-        else:
-            inp[i] *= 2024
-        i += 1
-print(len(inp))
+if __name__ == "__main__":
+    print(sum(count(stone, 25) for stone in stones))
