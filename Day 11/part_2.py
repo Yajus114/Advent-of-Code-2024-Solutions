@@ -1,4 +1,4 @@
-# A blazing fast cache approach courtesy of https://youtu.be/pVfsmQSlVOQ?si=3X092vjNCIlH19aM with which I added my mathematical logic
+# A blazing fast cache approach courtesy of https://youtu.be/pVfsmQSlVOQ?si=3X092vjNCIlH19aM in which I added my mathematical logic
 
 from functools import cache
 from math import floor, log10
