@@ -3,7 +3,7 @@ The weirdest puzzle. Nothing is specified, however some things can be deduced.
 First, a christmas tree can be assumed to be the case when the density of robots in a quadrant is max. If that's the case, then the safety factor has to be very low. This is because if a + b + c + d = e, then a * b * c * d is max when a = b = c = d (same for just a + b = c). The opposite of that is true if, say, a > (b, c, d). Whenever that is true, the product is smaller, and we can find at what second this occured.
 Second, the max number of iterations can only be Height * Width, because after that, all robots will just repeat positions (as per %).
 
-Some information can be deduced from the fact that the quizmaster had made us calculate the product of the quadrants in part 1. I am yet to think the solution for the case if a 'christmas tree' is a traingular structure distributed across the four grids.
+Some information can be deduced from the fact that the quizmaster had made us calculate the product of the quadrants in part 1. I am yet to think of a solution for the case if a 'christmas tree' is a triangular structure distributed across the four grids.
 """
 
 import re
