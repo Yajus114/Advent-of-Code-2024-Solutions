@@ -1,17 +1,13 @@
 from collections import deque
 
 
-def shortest_path_binary_matrix(grid) -> int:
+def shortest_path_binary_matrix(grid: list[str]) -> int:
     grid_len = len(grid)
-    if grid[0][0] == "#" or grid[grid_len - 1][grid_len - 1] == "#":
-        return -1
-
     queue = deque([(0, 0, 0)])
     visited = set((0, 0))
-    directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
 
     while queue:
-        r, c, length = queue.popleft()
+        r, c, length = queue.popleft()  # can also use heapq.heappop(queue)
         if r == grid_len - 1 and c == grid_len - 1:
             return length
 
@@ -37,4 +33,5 @@ if __name__ == "__main__":
             r, c = map(int, line.split(","))
             grid[c][r] = "#"
 
+    directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
     print(shortest_path_binary_matrix(grid))
